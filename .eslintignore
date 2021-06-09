@@ -1,0 +1,6 @@
+.history
+.app
+node_modules
+.eslintrc.js
+babel.config.js
+assets/

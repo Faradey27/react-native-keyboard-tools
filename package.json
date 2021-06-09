@@ -1,0 +1,61 @@
+{
+  "name": "react-native-keyboard-tools",
+  "version": "1.0.0",
+  "description": "A list of components and tools that help to work with the keyboard in react-native",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "*"
+  ],
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "cleanup": "rm -rf dist/*",
+    "lint": "yarn lint:js && yarn lint:ts && yarn prettier:check",
+    "lint:js": "eslint '**/*.{js,ts,tsx}' --ignore-pattern='coverage/'",
+    "lint:ts": "tsc -p tsconfig.json --noEmit",
+    "prettier": "prettier --write '**/*.{ts,tsx}'",
+    "prettier:check": "prettier --check '**/*.{ts,tsx}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Faradey27/react-native-keyboard-tools.git"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "keyboard",
+    "scrollview",
+    "KeyboardAvoidingView",
+    "react-component"
+  ],
+  "author": "Andrii Tiertyshnyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Faradey27/react-native-keyboard-tools/issues"
+  },
+  "homepage": "https://github.com/Faradey27/react-native-keyboard-tools#readme",
+  "devDependencies": {
+    "@types/react": "^17.0.11",
+    "@types/react-native": "^0.64.10",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-class-prefer-methods": "^1.0.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-react-native": "^3.11.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.3.0",
+    "react": "^17.0.2",
+    "react-native": "^0.64.2",
+    "typescript": "^4.3.2"
+  }
+}
