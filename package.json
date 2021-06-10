@@ -1,15 +1,12 @@
 {
   "name": "react-native-keyboard-tools",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "A list of components and tools that help to work with the keyboard in react-native",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "*"
-  ],
   "scripts": {
     "dev": "tsc -w",
-    "build": "tsc",
+    "build": "yarn cleanup && tsc",
     "cleanup": "rm -rf dist/*",
     "lint": "yarn lint:js && yarn lint:ts && yarn prettier:check",
     "lint:js": "eslint '**/*.{js,ts,tsx}' --ignore-pattern='coverage/'",

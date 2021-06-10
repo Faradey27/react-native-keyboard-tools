@@ -8,6 +8,8 @@ type UseKeyboardListeners = {
   restoreScrollOnKeyboardHide: boolean;
 };
 
+const DELAY_AFTER_KEYBOARD_HIDDEN = 120;
+
 export const useKeyboardListeners = ({
   keyboardAwareViewRef,
   restoreScrollOnKeyboardHide,
@@ -58,7 +60,7 @@ export const useKeyboardListeners = ({
           animated: true,
         });
       }
-    }, 300);
+    }, DELAY_AFTER_KEYBOARD_HIDDEN);
   }, [keyboardAwareViewRef, keyboardHeight, restoreScrollOnKeyboardHide]);
 
   useEffect(() => {

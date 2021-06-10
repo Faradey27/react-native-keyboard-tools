@@ -20,7 +20,7 @@ yarn add react-native-keyboard-tools
 ## Usage
 
 ```js
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-tools'
 ```
 
 ```jsx

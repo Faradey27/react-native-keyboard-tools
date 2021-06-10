@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from "react";
+import React, { memo, ReactNode, useCallback, useMemo } from "react";
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -13,6 +13,7 @@ import { useKeyboardScrollView } from "./useScrollView";
 const SCROLL_EVENT_THROTTLE = 200;
 
 type KeyboardAwareScrollViewProps = {
+  children: ReactNode;
   restoreScrollOnKeyboardHide?: boolean;
 } & ScrollViewProps;
 
