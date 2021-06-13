@@ -87,4 +87,5 @@ Andrii Tiertyshnyi
 
 ## Inspired
 By https://github.com/wix/react-native-keyboard-aware-scrollview
+
 By https://github.com/benhurott/react-native-masked-text
