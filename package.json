@@ -1,6 +1,6 @@
 {
   "name": "react-native-keyboard-tools",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "A list of components and tools that help to work with the keyboard in react-native",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,9 +22,13 @@
     "react",
     "react-native",
     "keyboard",
+    "text input",
+    "masked",
+    "input-mask",
     "scrollview",
     "KeyboardAvoidingView",
-    "react-component"
+    "react-component",
+    "hook"
   ],
   "author": "Andrii Tiertyshnyi",
   "license": "MIT",
