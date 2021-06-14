@@ -37,7 +37,7 @@ export type KeyboardAwareScrollViewRef = {
   }) => void;
 };
 
-const KeyboardAwareScrollViewRaw = memo(
+const KeyboardAwareScrollViewRaw = forwardRef(
   (
     {
       restoreScrollOnKeyboardHide = true,
@@ -96,4 +96,4 @@ const KeyboardAwareScrollViewRaw = memo(
   }
 );
 
-export const KeyboardAwareScrollView = forwardRef(KeyboardAwareScrollViewRaw);
+export const KeyboardAwareScrollView = memo(KeyboardAwareScrollViewRaw);
