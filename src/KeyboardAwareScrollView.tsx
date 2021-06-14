@@ -1,4 +1,12 @@
-import React, { memo, ReactNode, useCallback, useMemo } from "react";
+import React, {
+  ForwardedRef,
+  forwardRef,
+  memo,
+  ReactNode,
+  useCallback,
+  useImperativeHandle,
+  useMemo,
+} from "react";
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -17,12 +25,27 @@ type KeyboardAwareScrollViewProps = {
   restoreScrollOnKeyboardHide?: boolean;
 } & ScrollViewProps;
 
-export const KeyboardAwareScrollView = memo(
-  ({
-    restoreScrollOnKeyboardHide = true,
-    onScroll,
-    ...props
-  }: KeyboardAwareScrollViewProps) => {
+export type KeyboardAwareScrollViewRef = {
+  scrollTo: ({
+    x,
+    y,
+    animated,
+  }: {
+    x?: number;
+    y?: number;
+    animated?: boolean;
+  }) => void;
+};
+
+const KeyboardAwareScrollViewRaw = memo(
+  (
+    {
+      restoreScrollOnKeyboardHide = true,
+      onScroll,
+      ...props
+    }: KeyboardAwareScrollViewProps,
+    ref?: ForwardedRef<KeyboardAwareScrollViewRef>
+  ) => {
     const {
       keyboardAwareViewRef,
       onScrollViewLayout,
@@ -49,6 +72,16 @@ export const KeyboardAwareScrollView = memo(
       [onScroll, onScrollViewScroll]
     );
 
+    useImperativeHandle(
+      ref,
+      () => ({
+        scrollTo: ({ x = 0, y = 0, animated = true }) => {
+          keyboardAwareViewRef?.current?.scrollTo({ x, y, animated });
+        },
+      }),
+      [keyboardAwareViewRef]
+    );
+
     return (
       <ScrollView
         {...props}
@@ -62,3 +95,5 @@ export const KeyboardAwareScrollView = memo(
     );
   }
 );
+
+export const KeyboardAwareScrollView = forwardRef(KeyboardAwareScrollViewRaw);
