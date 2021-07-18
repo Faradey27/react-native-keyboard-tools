@@ -1,6 +1,15 @@
 # react-native-keyboard-tools
 > A list of components, tools and hooks that help to work with the keyboard in react-native
 
+![](demo.gif)
+
+## Demo Playground
+
+[Expo Playground](https://snack.expo.io/@andriitiertyshnyi/blessed-donuts)
+
+<div data-snack-id="@andriitiertyshnyi/blessed-donuts" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async src="https://snack.expo.io/embed.js"></script>
+
 ## Features
 
 ### KeyboardAwareScrollView
