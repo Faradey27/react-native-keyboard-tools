@@ -22,6 +22,7 @@ const SCROLL_EVENT_THROTTLE = 200;
 
 type KeyboardAwareScrollViewProps = {
   children: ReactNode;
+  automaticallyAdjustContentInsets?: boolean;
   restoreScrollOnKeyboardHide?: boolean;
 } & ScrollViewProps;
 
@@ -40,6 +41,7 @@ export type KeyboardAwareScrollViewRef = {
 const KeyboardAwareScrollViewRaw = forwardRef(
   (
     {
+      automaticallyAdjustContentInsets,
       restoreScrollOnKeyboardHide = true,
       onScroll,
       ...props
@@ -85,6 +87,7 @@ const KeyboardAwareScrollViewRaw = forwardRef(
     return (
       <ScrollView
         {...props}
+        automaticallyAdjustContentInsets={automaticallyAdjustContentInsets}
         contentInset={contentInset}
         ref={keyboardAwareViewRef}
         onLayout={onScrollViewLayout}
