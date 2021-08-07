@@ -37,11 +37,11 @@
   },
   "homepage": "https://github.com/Faradey27/react-native-keyboard-tools#readme",
   "devDependencies": {
-    "@types/react": "^17.0.11",
-    "@types/react-native": "^0.64.10",
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.0",
-    "eslint": "^7.27.0",
+    "@types/react": "^17.0.16",
+    "@types/react-native": "^0.64.12",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
@@ -54,9 +54,9 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-react-native": "^3.11.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-native": "^0.64.2",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.5"
   }
 }
