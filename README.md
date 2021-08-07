@@ -1,64 +1,83 @@
 # react-native-keyboard-tools
-> A list of components, tools and hooks that help to work with the keyboard in react-native
+> Typesafe way to work with keyboard
 
-## Demo and playground
+![platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS-brightgreen.svg?style=flat-square&colorB=191A17)
+[![npm](https://img.shields.io/npm/v/react-native-keyboard-tools.svg?style=flat-square)](https://www.npmjs.com/package/react-native-keyboard-tools)
+[![npm](https://img.shields.io/npm/dm/react-native-keyboard-tools.svg?style=flat-square&colorB=007ec6)](https://www.npmjs.com/package/react-native-keyboard-tools)
+<!-- [![github release](https://img.shields.io/github/release/faradey27/react-native-keyboard-tools.svg?style=flat-square)](https://github.com/faradey27/react-native-keyboard-tools/releases) -->
+[![github issues](https://img.shields.io/github/issues/faradey27/react-native-keyboard-tools.svg?style=flat-square)](https://github.com/faradey27/react-native-keyboard-tools/issues)
+[![github closed issues](https://img.shields.io/github/issues-closed/faradey27/react-native-keyboard-tools.svg?style=flat-square&colorB=44cc11)](https://github.com/faradey27/react-native-keyboard-tools/issues?q=is%3Aissue+is%3Aclosed)
+
+-----
+
+## Table of contents
+
+  - [Showcase](#showcase)
+  - [Usage](#usage)
+    - [KeyboardAwareScrollView](#keyboardawarescrollview)
+    - [useMaskedTextInput](#usemaskedtextinput)
+    - [KeyboardAwareScrollView and useMaskedTextInput](#keyboardawarescrollview-and-usemaskedtextinput)
+  - [KeyboardAwareScrollView props and methods](#keyboardawarescrollview-props-and-methods)
+    - [Props](#props)
+    - [Methods](#methods)
+  - [useMaskedTextInput params](#usemaskedtextinput-params)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Author](#author)
+
+-----
+
+## Showcase
 
 ![](demo.gif)
 
 [Expo Playground](https://snack.expo.io/@andriitiertyshnyi/blessed-donuts)
 
-## Features
-
-### KeyboardAwareScrollView
-> A ScrollView component that handles keyboard appearance and automatically scrolls to focused `TextInput`.
-
-### useMaskedTextInput
-> A React hook to mask an input using.
-
-
-## Installation
-
-Installation can be done through `npm` or `yarn`:
-
-```shell
-npm i react-native-keyboard-tools --save
-```
-
-```shell
-yarn add react-native-keyboard-tools
-```
+-----
 
 ## Usage
 
-### KeyboardAwareScrollView example
+```bash
+$ npm install --save react-native-keyboard-tools
+```
 
-```js
+or
+
+```bash
+$ yarn add react-native-keyboard-tools
+```
+
+### KeyboardAwareScrollView
+
+```jsx
+import { View, TextInput } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-tools'
+
+export const MyComponent = () => {
+  return (
+    <KeyboardAwareScrollView>
+      <View>
+        <TextInput />
+      </View>
+      <View>
+        <TextInput />
+      </View>
+      <View>
+        <TextInput />
+      </View>
+    </KeyboardAwareScrollView>
+  )
+}
 ```
+
+### useMaskedTextInput
 
 ```jsx
-<KeyboardAwareScrollView>
-  <View>
-    <TextInput />
-  </View>
-  <View>
-    <TextInput />
-  </View>
-  <View>
-    <TextInput />
-  </View>
-</KeyboardAwareScrollView>
-```
-
-### useMaskedTextInput example
-
-```js
-import { TextInput } from 'react-native'
+import { useState } from 'react'
+import { View, TextInput } from 'react-native'
 import { useMaskedTextInput } from 'react-native-keyboard-tools'
-```
 
-```jsx
-const MyComponent = () => {
+export const MyComponent = () => {
   const [value, setValue] = useState("");
   const { onChangeMaskedText } = useMaskedTextInput({ mask: "+3(99) 9999 9999", onChangeText: setValue });
 
@@ -66,7 +85,80 @@ const MyComponent = () => {
 }
 ```
 
-### useMaskedTextInput params
+### KeyboardAwareScrollView and useMaskedTextInput
+
+```jsx
+import { View, TextInput } from 'react-native'
+import { KeyboardAwareScrollView, useMaskedTextInput } from 'react-native-keyboard-tools'
+
+export const MyComponent = () => {
+  const [value, setValue] = useState("");
+  const { onChangeMaskedText } = useMaskedTextInput({ mask: "+3(99) 9999 9999", onChangeText: setValue });
+
+  return (
+    <KeyboardAwareScrollView>
+      <View>
+        <TextInput />
+      </View>
+      <View>
+        <TextInput />
+      </View>
+      <View>
+        <TextInput onChangeText={onChangeMaskedText} />
+      </View>
+    </KeyboardAwareScrollView>
+  )
+}
+```
+
+-----
+
+## KeyboardAwareScrollView props and methods
+
+### Props
+
+Prop | Description | Type | Default
+------ | ------ | ------ | ------
+**`children`** | Any react node | ReactNode | **Required**
+**`automaticallyAdjustContentInsets`** | Controls whether OS should automatically adjust the content inset for scroll views that are placed behind a navigation bar or tab bar/toolbar. | Boolean | false
+**`restoreScrollOnKeyboardHide`** | Controls whether library should restore scroll position to the initial value after keyboard become hidden | Boolean | false
+
+Any react-native ScrollView props are also accepted([ScrollViewProps](https://reactnative.dev/docs/scrollview#props))
+
+### Methods
+
+```jsx
+import { View, TextInput } from 'react-native'
+import { KeyboardAwareScrollView, KeyboardAwareScrollViewRef } from 'react-native-keyboard-tools'
+
+export const MyComponent = () => {
+  const scrollViewRef = useRef<KeyboardAwareScrollViewRef>();
+
+  return (
+    <KeyboardAwareScrollView ref={scrollViewRef}>
+      <View>
+        <TextInput />
+      </View>
+      <View>
+        <TextInput />
+      </View>
+      <View>
+        <TextInput onChangeText={onChangeMaskedText} />
+      </View>
+    </KeyboardAwareScrollView>
+  )
+}
+```
+
+scrollViewRef.scrollTo: `({ x, y, animated }: { x?: number; y?: number; animated?: boolean }) => void`
+
+-----
+
+## useMaskedTextInput params
+
+```js
+const { onChangeMaskedText } = useMaskedTextInput({ mask, onChangeText });
+```
 
 mask: `defined by pattern`
 
@@ -75,23 +167,22 @@ mask: `defined by pattern`
 * `S` - accept alphanumeric.
 * `*` - accept all, EXCEPT white space.
 
-Ex: `AAA-9999` 
+Example: `AAA-9999` 
 
 onChangeText: `(value: string) => void`
 
-### useMaskedTextInput result 
+onChangeMaskedText: `(value: string, rawValue: string) => void`
 
-onChangeMaskedText: (value: string, rawValue: string) => void;
+-----
+
+## Credits
+
+Inspired by https://github.com/wix/react-native-keyboard-aware-scrollview and https://github.com/benhurott/react-native-masked-text
 
 ## License
 
-MIT.
+[MIT.](LICENSE.md)
 
 ## Author
 
-Andrii Tiertyshnyi
-
-## Inspired
-By https://github.com/wix/react-native-keyboard-aware-scrollview
-
-By https://github.com/benhurott/react-native-masked-text
+[Andrii Tiertyshnyi](https://www.linkedin.com/in/atiertyshnyi/)
